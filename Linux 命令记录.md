@@ -133,12 +133,19 @@ awk [-F  field-separator]  'commands'  input-file(s)
 awk工作流程是这样的：读入有'\n'换行符分割的一条记录，然后将记录按指定的域分隔符划分域，填充域，$0则表示所有域,$1表示第一个域,
 $n表示第n个域。默认域分隔符是"空白键" 或 "[tab]键"
 
-awk -F: '{print $1}' /etc/passwd ##分隔符为：并输出输入文件的第一个域
-awk '{print NF}' ##输出文件域的个数
-cat /etc/passwd |awk  -F ':'  'BEGIN {print "name,shell"}  {print $1","$7} END {print "blue,/bin/nosh"}'
+awk -F: '{print $1}' /etc/passwd 
+分隔符为：并输出输入文件的第一个域
 
+awk '{print NF}' 
+输出文件域的个数
+
+cat /etc/passwd |awk  -F ':'  'BEGIN {print "name,shell"}  {print $1","$7} END {print "blue,/bin/nosh"}'
 awk工作流程是这样的：先执行BEGING，然后读取文件，读入有/n换行符分割的一条记录，然后将记录按指定的域分隔符划分域，填充域，$0则表示所有域,$1表示第一个域,$n表示第n个域,随后开始执行模式所对应的动作action。接着开始读入第二条记录······直到所有的记录都读完，最后执行END操作。
 
-awk -F: '/root/{print $7}' /etc/passwd ##查找输入文件带有root关键字所有的行，并输出文件的第7个域。
+awk -F: '/root/{print $7}' /etc/passwd 
+查找输入文件带有root关键字所有的行，并输出文件的第7个域。
+
+awk -F: '{$1=""; print $0}' /etc/passwd
+令第一列为空，然后输出剩余的所有列
 ```
 
