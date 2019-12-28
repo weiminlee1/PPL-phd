@@ -63,6 +63,7 @@ nohup python3 -u test.py >test.log 2>&1 &
        如果后台中有多个命令，可以先用jobs查看jobnum，然后用 bg %jobnum 将选中的命令调出继续执行。
 
 5、合并文件
+        (1)
 
 ```
 
