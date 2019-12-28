@@ -151,6 +151,8 @@ $n表示第n个域。默认域分隔符是"空白键" 或 "[tab]键"
 awk -F: '{print $1}' /etc/passwd 
 分隔符为：并输出输入文件的第一个域
 
+awk -F: '{print $NF}' /etc/passwd
+分隔符为：并输出文件的最后一列
 awk '{print NF}' 
 输出文件域的个数
 
