@@ -62,8 +62,66 @@ nohup python3 -u test.py >test.log 2>&1 &
 
        如果后台中有多个命令，可以先用jobs查看jobnum，然后用 bg %jobnum 将选中的命令调出继续执行。
 
-5、合并文件
-        (1)
+5、取文件的并集、交集
+        1. 取出两个文件的并集（重复的行只保留一份）
+
+  cat file1 file2 | sort | uniq > file3
+
+        2. 取出两个文件的交集（只留下同时存在于两个文件中的文件）
+
+  cat file1 file2 | sort | uniq -d > file3
+
+        3. 删除交集，留下其他的行
+
+  cat file1 file2 | sort | uniq -u > file3
+
+6、文件合并
+
+        1. 一个文件在上，一个文件在下
+
+  cat file1 file2 > file3
+
+        2. 一个文件在左，一个文件在右
+
+  paste file1 file2 > file3
+
+7、一个文件去掉重复的行
+
+        1. 重复的多行记为一行
+
+  sort file |uniq
+
+        2. 重复的行全部去掉
+
+  sort file |uniq -u
+
+8、文件拆分
+
+        1.split 命令
+
+使用方式：split [OPTION] [INPUT [PREFIX]
+
+ OPTION 有
+
+　　- l<行数>或-l<行数> 　指定每多少行就要切成一个小文件。
+
+　　-b<字节> 　指定每多少字就要切成一个小文件。支持单位:m,k
+
+　　-C<字节> 　与-b参数类似，但切割时尽量维持每行的完整性。
+
+如：
+
+a>按照 指定分割后文件行数
+
+   对于文本文件，可以通过指定分割后文件的行数来进行文件分割。
+
+   命令：split -l 300 large_file.log new_file_prefi
+
+b>按照 指定分割后文件大小
+
+   对于文本文件，可以通过指定分割后文件的行数来进行文件分割。
+
+   命令：split -l 300 large_file.log new_file_prefix
 
 ```
 
