@@ -174,14 +174,28 @@ awk  -F ':'  '{print "filename:" FILENAME ",linenumber:" NR ",columns:" NF ",lin
 awk -F: '{NR==2；print $0}' /etc/passwd
 输出第二行的所有内容
 
-*切换分割符*
+#切换分割符#
 awk -v FS=':' -v OFS='\t' '{print $1, $2, $3}' /etc/passwd
-awk 'BEGIN{FS=':';OFS="\t"}{print $1,$2,$3}' /etc/passwd
+awk 'BEGIN{FS=":";OFS="\t"}{print $1,$2,$3}' /etc/passwd
 指定输入文件分割符为冒号；输出文件分割符为tab键；-v也是options的一种，用于设置变量的值。
 
 
+awk -F"," '{for(i=2;i<=NF;i++){printf "%s ", $i}; printf "\n"}'
+##删除第一列，并切换分隔符
 
-10、cut
+
+10、tr
+ tr 命令用于转换或删除文件中的字符。
+ tr [-cdst][--help][--version][第一字符集][第二字符集]  
+ 
+ cat testfile |tr a-z A-Z 
+ 将testfile文件中的小写字母改成大写字母
+ 
+ cat testfile|tr "," "\t" > testfile1
+ 将testfile文件中的，分隔符改成tab分割符
+ 
+
+11、cut
 cut -d ":" -f 1-2,4,5 /etc/passwd
 指定分割符为冒号；输出1，2，4，5列
 
