@@ -9,7 +9,7 @@ argv[3] means target patnoid
 argv[4] means output file"""
 
 from itertools import islice
-from sys import *
+from sys import * ##sys.argv[0] 表示脚本本身，argv[1]代表传入的第一个数据
 import numpy as np
 import pandas as pd
 
@@ -21,7 +21,7 @@ row_number = len(probe_list)
 print(row_number)
 
 with open(argv[2]) as inputfile:
-	header = inputfile.readline().strip().split('\t') ## get the first row from input file
+	header = inputfile.readline().strip().split('\t') ## get the first row from input file获取文件第一行
 	col_number = len(header)## get column numbers of file
 print(col_number)
 header_changed = []
@@ -44,11 +44,14 @@ for line in islice(open(argv[2], 'r'), 1, None): ##the seconde input file
 print(len(probe_exp))
 probe_array = []
 for item in probe_exp:
-	probe_array = np.append(probe_array,item) ##save to np array
+	probe_array = np.append(probe_array,item) ##save to np array存入数组中
 
 #probe_array = np.concatenate(probe_exp[:])
 probe = probe_array.reshape(row_number,col_number) ## list was changed to array;#print(probe);#print(probe.shape)
-probe_dataframe = pd.DataFrame(data=probe, columns=header_changed) ##np.array to pd.DataFrame; #print(probe_dataframe.columns)
+
+probe_dataframe = pd.DataFrame(data=probe, columns=header_changed) ##np.array to pd.DataFrame; 
+
+#print(probe_dataframe.columns)
 probe_dataframe.index = probe_dataframe.ix[:,0]
 #probe_dataframe.to_csv(argv[4], header=True, index=False) #probe_dataframe.columns = header
 target_patno = []
