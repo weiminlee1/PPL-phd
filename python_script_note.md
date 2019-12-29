@@ -70,5 +70,13 @@ df = pd.read_table(argv[1], sep="\t", header=0, index_col=0) ##header=0指定第
 df = df.ix[1:10,['column1','column2']] ##只取第二行至第九行，第二列和第三列的数据
 
 df = df.drop(index=["pat","mat"], axis=0) ##去掉指定行
-df = df.drop(columns=[
+df = df.drop(columns=['column1','column2'], axis=1) ##删除指定列
+
+df.to_csv(argv[2], header=0, sep="\t") ##header=0不输出列明，index=0不输出行名
+
+![img](https://upload-images.jianshu.io/upload_images/3382609-7ce79bb564762d80.png?imageMogr2/auto-orient/strip|imageView2/2/w/1110read_table())
+
+
+
+
 
