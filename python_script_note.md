@@ -74,7 +74,8 @@ df = df.drop(columns=['column1','column2'], axis=1) ##删除指定列
 
 df.to_csv(argv[2], header=0, sep="\t") ##header=0不输出列明，index=0不输出行名
 
-![img](https://upload-images.jianshu.io/upload_images/3382609-7ce79bb564762d80.png?imageMogr2/auto-orient/strip|imageView2/2/w/1110read_table())
+
+![img](https://upload-images.jianshu.io/upload_images/3382609-7ce79bb564762d80.png?imageMogr2/auto-orient/strip|imageView2/2/w/1110)
 
 
 
