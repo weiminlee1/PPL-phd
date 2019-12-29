@@ -62,3 +62,13 @@ for line in open(argv[3], 'r'):
 target_patno_dataframe = probe_dataframe.loc[:, target_patno]
 target_patno_dataframe.to_csv(argv[4])```
 
+####pd.DataFrame
+pd.set_option('precision', n) ##是个数据小数点的位数
+
+df = pd.read_table(argv[1], sep="\t", header=0, index_col=0) ##header=0指定第一行为列名，index_col=0指定第一列为行名
+
+df = df.ix[1:10,['column1','column2']] ##只取第二行至第九行，第二列和第三列的数据
+
+df = df.drop(index=["pat","mat"], axis=0) ##去掉指定行
+df = df.drop(columns=[
+
