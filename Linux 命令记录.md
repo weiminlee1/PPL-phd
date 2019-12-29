@@ -174,8 +174,12 @@ awk  -F ':'  '{print "filename:" FILENAME ",linenumber:" NR ",columns:" NF ",lin
 awk -F: '{NR==2；print $0}' /etc/passwd
 输出第二行的所有内容
 
+*切换分割符*
 awk -v FS=':' -v OFS='\t' '{print $1, $2, $3}' /etc/passwd
-指定输入文件分割符为冒号；输出文件分割符为tab键
+awk 'BEGIN{FS=':';OFS="\t"}{print $1,$2,$3}' /etc/passwd
+指定输入文件分割符为冒号；输出文件分割符为tab键；-v也是options的一种，用于设置变量的值。
+
+
 
 10、cut
 cut -d ":" -f 1-2,4,5 /etc/passwd
