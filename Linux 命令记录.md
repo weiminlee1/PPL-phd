@@ -240,6 +240,36 @@ u 撤销上次命令的结果
 ctrl + r 重复上次命令
 
 
+13、命令别名设定功能
+alias lm='ls -a' ##lm相当于ls -a 的效果
+unalias lm ##取消别名
+
+14、变量
+##设置变量
+a='covariate'
+##显示变量
+echo $a
+##把自定义变量输出到环境变量中
+export a
+##删除变量
+unset a
+env ##观察环境变量
+set ##显示所有变量
+
+[dmtsai@study ~]$ declare [-aixr] variable
+选项与参数：
+-a ：将后面名为 variable 的变量定义成为数组 (array) 类型
+-i ：将后面名为 variable 的变量定义成为整数数字 (integer) 类型
+-x ：用法与 export 一样，就是将后面的 variable 变成环境变量；
+-r ：将变量设定成为 readonly 类型，该变量不可被更改内容，也不能 unset
+范例一：让变量 sum 进行 100+300+50 的加总结果
+[dmtsai@study ~]$ sum=100+300+50
+[dmtsai@study ~]$ echo ${sum}
+100+300+50 <==咦！怎么没有帮我计算加总？因为这是文字型态的变量属性啊！
+[dmtsai@study ~]$ declare -i sum=100+300+50\ echo $sum
+
+
+
 
 ```
 
