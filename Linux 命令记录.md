@@ -272,4 +272,34 @@ set ##显示所有变量
 
 
 ```
+查看 cpu 信息
+linux 系统
 
+查看物理 cpu 数：
+
+    cat /proc/cpuinfo| grep "physical id"| sort| uniq| wc -l
+
+查看每个物理 cpu 中 核心数(core 数)：
+
+    cat /proc/cpuinfo | grep "cpu cores" | uniq
+
+查看总的逻辑 cpu 数（processor 数）：
+
+    cat /proc/cpuinfo| grep "processor"| wc -l
+
+查看 cpu 型号：
+
+    cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c
+
+判断 cpu 是否 64 位：
+
+    检查 cpuinfo 中的 flags 区段，看是否有 lm （long mode） 标识
+
+lscpu 命令可以同时看到上述信息。比如：
+
+...
+CPU(s):                24
+On-line CPU(s) list:   0-23
+Thread(s) per core:    2
+Core(s) per socket:    6
+Socket(s):             2
