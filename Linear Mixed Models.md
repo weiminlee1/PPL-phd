@@ -12,11 +12,7 @@ library(lmerTest)
 
 
 
-**基本表达式**
-
-```
-fit = lmer(data= , formula = DV ~ Fixed_Factor + (Random_intercept + Random_Slope | Random_Factor))
-```
+**基本表达式**![640?wx_fmt=gif](https://ss.csdn.net/p?https://mmbiz.qpic.cn/mmbiz_gif/y2fhgP4leTh3Vmv0CltGnMU46LCgYpqicWtCj4JRpm5rEhL01E2TawKfRX8ClGytzNsakJvQdic4IdJxQufjZ6Xw/640?wx_fmt=gif)
 
 - `data` - 要处理的数据集；
 - `formula` - 表达式；
